@@ -1,0 +1,29 @@
+<img src="assets/outreach_logo.png" style="width:10%">
+
+<a [routerLink]="['/register']" class="btn btn-primary">SignUp</a>
+
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+    <label for="userName">UserName:</label>
+    <input type="text" class="form-control" formControlName="userName" id="userName">
+    <div *ngIf="submitted && loginForm.controls.userName.errors" class="errors">
+        <div *ngIf="loginForm.controls.userName.errors.required">UserName is required</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" formControlName="password" id="password">
+    <div *ngIf="submitted && loginForm.controls.password.errors" class="errors">
+        <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+    </div>
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">Login</button>
+    <div *ngIf="invalidLogin" class="errors">
+        <div>Invalid credentials.</div>
+    </div>
+</div>
+
+</form>
